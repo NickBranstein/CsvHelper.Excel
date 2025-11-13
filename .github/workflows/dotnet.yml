@@ -2,17 +2,16 @@ name: .NET CI
 
 on:
   pull_request:
-    types: [opened]
+    types: [opened, edited]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
-          ref: ${{ github.event.pull_request.head.sha }}
       - name: Install GitVersion
         uses: gittools/actions/gitversion/setup@v0.9.8
         with:
@@ -23,12 +22,12 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 6.0.x
+          dotnet-version: 9.0.x
       - name: Restore dependencies
         run: dotnet restore ./src/CsvHelper.Excel.sln
       - name: Build
         run: dotnet build --no-restore --configuration Release ./src/CsvHelper.Excel.sln
       - name: Test
-        run: dotnet test --no-build --configuration Release --verbosity normal ./src/CsvHelper.Excel.sln
+        run: dotnet test --no-build --configuration Release ./src/CsvHelper.Excel.sln -- --coverage --coverage-output-format cobertura --coverage-output coverage.xml
       - name: Pack
         run: dotnet pack --no-build --configuration Release --version-suffix="${{ steps.gitversion.outputs.nuGetPreReleaseTagV2 }}" ./src/CsvHelper.Excel/CsvHelper.Excel.csproj --output .
