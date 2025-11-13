@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using ClosedXML.Excel;
 using CsvHelper.Excel.Specs.Common;
-using FluentAssertions;
+using Shouldly;
 using Xunit;
 
 namespace CsvHelper.Excel.Specs.Parser
@@ -88,13 +88,13 @@ namespace CsvHelper.Excel.Specs.Parser
         [Fact]
         public void TheResultsAreNotNull()
         {
-            Results.Should().NotBeNull();
+            Results.ShouldNotBeNull();
         }
 
         [Fact]
         public void TheResultsAreCorrect()
         {
-            Values.Should().BeEquivalentTo(Results, options => options.IncludingProperties());
+            Values.ShouldBeEquivalentTo(Results);
         }
 
         public void Dispose()

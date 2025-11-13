@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using ClosedXML.Excel;
 using CsvHelper.Configuration;
 using CsvHelper.Excel.Specs.Common;
-using FluentAssertions;
+using Shouldly;
 using Xunit;
 
 namespace CsvHelper.Excel.Specs.Parser
@@ -97,14 +97,14 @@ namespace CsvHelper.Excel.Specs.Parser
         public async void TheResultsAreNotNull()
         {
             await RunAsync();
-            Results.Should().NotBeNull();
+            Results.ShouldNotBeNull();
         }
 
         [Fact]
         public async void TheResultsAreCorrect()
         {
             await RunAsync();
-            Values.Should().BeEquivalentTo(Results, options => options.IncludingProperties());
+            Values.ShouldBeEquivalentTo(Results);
         }
 
         [Fact]
@@ -120,7 +120,7 @@ namespace CsvHelper.Excel.Specs.Parser
             while (await reader.ReadAsync())
             {
                 var data = reader.GetRecord<Person>();
-                data.Should().NotBeNull();
+                data.ShouldNotBeNull();
             }
         }
 

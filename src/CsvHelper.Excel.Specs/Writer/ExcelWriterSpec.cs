@@ -2,7 +2,7 @@
 using System.IO;
 using ClosedXML.Excel;
 using CsvHelper.Excel.Specs.Common;
-using FluentAssertions;
+using Shouldly;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -55,14 +55,14 @@ namespace CsvHelper.Excel.Specs.Writer
         [Fact]
         public void TheFileIsAValidExcelFile()
         {
-            GetWorkbook().Should().NotBeNull();
+            GetWorkbook().ShouldNotBeNull();
         }
 
         [Fact]
         public void TheExcelWorkbookHeadersAreCorrect()
         {
-            nameof(Person.Name).Should().Be(GetWorksheet().Row(StartRow).Cell(StartColumn).Value.ToString());
-            nameof(Person.Age).Should().Be(GetWorksheet().Row(StartRow).Cell(StartColumn + 1).Value.ToString());
+            nameof(Person.Name).ShouldBe(GetWorksheet().Row(StartRow).Cell(StartColumn).Value.ToString());
+            nameof(Person.Age).ShouldBe(GetWorksheet().Row(StartRow).Cell(StartColumn + 1).Value.ToString());
         }
 
         [Fact]
@@ -70,9 +70,8 @@ namespace CsvHelper.Excel.Specs.Writer
         {
             for (var i = 0; i < Values.Length; i++)
             {
-                Values[i].Name.Should().Be(GetWorksheet().Row(StartRow + i + 1).Cell(StartColumn).Value.ToString());
-                Values[i].Age.ToString().Should().Be(
-                    GetWorksheet().Row(StartRow + i + 1).Cell(StartColumn + 1).Value.ToString());
+                Values[i].Name.ShouldBe(GetWorksheet().Row(StartRow + i + 1).Cell(StartColumn).Value.ToString());
+                Values[i].Age.ToString().ShouldBe(GetWorksheet().Row(StartRow + i + 1).Cell(StartColumn + 1).Value.ToString());
             }
         }
 
