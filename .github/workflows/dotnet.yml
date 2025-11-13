@@ -29,5 +29,11 @@ jobs:
         run: dotnet build --no-restore --configuration Release ./src/CsvHelper.Excel.sln
       - name: Test
         run: dotnet test --no-build --configuration Release ./src/CsvHelper.Excel.sln -- --coverage --coverage-output-format cobertura --coverage-output coverage.xml
+      - name: ReportGenerator
+        uses: danielpalme/ReportGenerator-GitHub-Action@5.5.0
+        with:
+          reports: cobertura.xml
+          targetdir: coveragereport
+          reporttypes: Html_Dark
       - name: Pack
         run: dotnet pack --no-build --configuration Release --version-suffix="${{ steps.gitversion.outputs.nuGetPreReleaseTagV2 }}" ./src/CsvHelper.Excel/CsvHelper.Excel.csproj --output .
