@@ -2,7 +2,7 @@ name: .NET CI
 
 on:
   pull_request:
-    types: [opened, edited]
+    types: [opened, synchronize]
 
 jobs:
   build:
