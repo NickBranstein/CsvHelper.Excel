@@ -2,7 +2,6 @@ using System.Globalization;
 using System.IO;
 using ClosedXML.Excel;
 using CsvHelper.Excel.Specs.Common;
-using Xunit.Abstractions;
 
 namespace CsvHelper.Excel.Specs.Writer
 {
@@ -10,8 +9,8 @@ namespace CsvHelper.Excel.Specs.Writer
     {
         private readonly byte[] _bytes;
 
-        public SerialiseUsingStreamSpec(ITestOutputHelper outputHelper)
-            : base(outputHelper, "serialise_by_workbook")
+        public SerialiseUsingStreamSpec()
+            : base("serialise_by_workbook")
         {
             using var stream = new MemoryStream();
             using (var excelWriter = new ExcelWriter(stream, CultureInfo.InvariantCulture, true))

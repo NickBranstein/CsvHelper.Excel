@@ -4,7 +4,6 @@ using ClosedXML.Excel;
 using CsvHelper.Excel.Specs.Common;
 using Shouldly;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace CsvHelper.Excel.Specs.Writer
 {
@@ -28,13 +27,13 @@ namespace CsvHelper.Excel.Specs.Writer
         protected abstract XLWorkbook GetWorkbook();
         protected abstract IXLWorksheet GetWorksheet();
 
-        protected ExcelWriterSpec(ITestOutputHelper outputHelper, string path, string worksheetName = "Export",
+        protected ExcelWriterSpec(string path, string worksheetName = "Export",
             int startRow = 1, int startColumn = 1)
         {
             Path =
                 System.IO.Path.GetFullPath(System.IO.Path.Combine("data", Guid.NewGuid().ToString(), $"{path}.xlsx"));
 
-            outputHelper.WriteLine($"{path}: {Path}");
+            TestContext.Current.SendDiagnosticMessage($"{path}: {Path}");
             var directory = System.IO.Path.GetDirectoryName(Path);
             if (!Directory.Exists(directory))
             {
