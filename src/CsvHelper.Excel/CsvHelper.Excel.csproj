@@ -8,7 +8,7 @@
     <DebugType>portable</DebugType>
     <AssemblyName>CsvHelper.Excel</AssemblyName>
     <OutputType>Library</OutputType>
-    <PackageId>CsvHelper.Excel.ClosedXml</PackageId>
+    <PackageId>CsvHelper.Excel.ClosedXml.Remix</PackageId>
     <PackageTags>CSV;CSVHelper;Excel;ClosedXML</PackageTags>
     <PackageProjectUrl>https://github.com/NickBranstein/CsvHelper.Excel</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
