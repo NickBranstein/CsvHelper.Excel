@@ -13,6 +13,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Get Version
+        id: get-version
         uses: kzrnm/get-net-sdk-project-versions-action@v2.0.0
         with:
           proj-path: ./src/CsvHelper.Excel/CsvHelper.Excel.csproj
