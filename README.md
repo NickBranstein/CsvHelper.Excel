@@ -1,6 +1,8 @@
 <!-- [![Build status](https://ci.appveyor.com/api/projects/status/bqh412kdla4peqsw?svg=true)](https://ci.appveyor.com/project/christophano/csvhelper-excel) -->
 
-[![Discord Chat](https://img.shields.io/discord/308323056592486420.svg)](https://discord.gg/TbanjBb)  [![NuGet Badge](https://buildstats.info/nuget/CsvHelper.Excel.Core)](https://www.nuget.org/packages/CsvHelper.Excel.Core/)
+[![NuGet Badge](https://buildstats.info/nuget/CsvHelper.Excel.Core)](https://www.nuget.org/packages/CsvHelper.Excel.Core/)
+
+This is a fork of [CsvHelper.Excel](https://github.com/youngcm2/CsvHelper.Excel) with updated dependencies to work with the latest version of [CsvHelper](https://github.com/JoshClose/CsvHelper).
 
 # Csv Helper for Excel
 
